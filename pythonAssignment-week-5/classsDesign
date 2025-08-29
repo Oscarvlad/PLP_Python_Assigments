@@ -1,0 +1,52 @@
+# Parent Class: Smartphone
+class Smartphone:
+    def __init__(self, brand, model, storage, price):
+        self.brand = brand
+        self.model = model
+        self.__storage = storage  # Encapsulation (private attribute)
+        self.price = price
+
+    def get_storage(self):
+        """Getter method for private storage attribute"""
+        return self.__storage
+
+    def set_storage(self, new_storage):
+        """Setter method for private storage attribute"""
+        if new_storage > 0:
+            self.__storage = new_storage
+        else:
+            print("Invalid storage value!")
+
+    def display_info(self):
+        """Display smartphone information"""
+        print(f"Brand: {self.brand}, Model: {self.model}, Storage: {self.__storage}GB, Price: ${self.price}")
+
+    def call(self, number):
+        """Simulate making a phone call"""
+        print(f"Calling {number} from your {self.brand} {self.model}...")
+
+# Child Class: GamingSmartphone (inherits from Smartphone)
+class GamingSmartphone(Smartphone):
+    def __init__(self, brand, model, storage, price, cooling_system):
+        super().__init__(brand, model, storage, price)  # Call parent constructor
+        self.cooling_system = cooling_system
+
+    def play_game(self, game_name):
+        """Simulate playing a game on the smartphone"""
+        print(f"Playing {game_name} on your {self.brand} {self.model} with {self.cooling_system} cooling system.")
+
+    def display_info(self):
+        """Override the parent's display_info method to include gaming-specific details"""
+        super().display_info()
+        print(f"Cooling System: {self.cooling_system}")
+
+
+# Example Usage
+print("=== Assignment 1: Smartphone Class ===")
+smartphone1 = Smartphone("Apple", "iPhone 14", 128, 999)
+smartphone1.display_info()
+smartphone1.call("123-456-7890")
+
+gaming_phone = GamingSmartphone("Asus", "ROG Phone 6", 256, 1299, "Advanced Vapor Chamber")
+gaming_phone.display_info()
+gaming_phone.play_game("Fortnite")

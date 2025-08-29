@@ -1,0 +1,37 @@
+# Base Class: Vehicle
+class Vehicle:
+    def move(self):
+        """Base method to be overridden by subclasses"""
+        print("This vehicle is moving.")
+
+# Subclass: Car
+class Car(Vehicle):
+    def move(self):
+        """Override the move method for cars"""
+        print("Driving")
+
+# Subclass: Plane
+class Plane(Vehicle):
+    def move(self):
+        """Override the move method for planes"""
+        print("Flying")
+
+# Subclass: Boat
+class Boat(Vehicle):
+    def move(self):
+        """Override the move method for boats"""
+        print("Sailing")
+
+# Function to demonstrate polymorphism
+def demonstrate_movement(vehicles):
+    for vehicle in vehicles:
+        vehicle.move()
+
+# Example Usage
+print("\n=== Activity 2: Polymorphism Challenge ===")
+car = Car()
+plane = Plane()
+boat = Boat()
+
+vehicles = [car, plane, boat]
+demonstrate_movement(vehicles)
